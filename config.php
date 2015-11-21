@@ -1,16 +1,25 @@
 <?php
 
-define( "MAIN_CONTROLLER", "Welcome" );
-define( "MAIN_METHOD_EACH_CTRL", "index" );
-
-define( "ENABLE_LOGS", "0" );
-
-// DATABASE INFO
-define( "DB_HOST", "localhost" );
-define( "DB_USER", "" );
-define( "DB_PASSWORD", "" );
-define( "DB_NAME", "" );
-
-// DEFAULT TEMPLATES
-define( "TEMPLATE_ERROR_404", "errors/404" );
-define( "TEMPLATE_COMMON_ERROR", "errors/error" );
+return array(
+    'mainController' => 'Welcome',
+    'mainMethodEachController' => 'index',
+    
+    'enableLogs' => '0',
+    
+    // Language name, folder name
+    'language' => "es",
+    
+    // Database settings
+    'dbHost' => 'localhost',
+    'dbUser' => '',
+    'dbPassword' => '',
+    'dbName' => '',
+    
+    // Default template common
+    'templateHeader' => 'common/header',
+    'templateFooter' => 'common/footer',
+    
+    // Default templates errors
+    'templateError404' => 'errors/404',
+    'templateCommonError' => 'errors/error'
+);
