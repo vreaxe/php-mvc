@@ -1,7 +1,8 @@
 <?php
 
-class Welcome {
+class Welcome extends Controller {
     public function index() {
-        echo "welcome index. HELLO!!!";
+        $title = "Another Simple PHP MVC Framework";
+        $this->render("welcome/index", compact("title"));
     }
 }

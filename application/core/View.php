@@ -8,7 +8,8 @@ class View {
             include_once("./" . $filename);
         } else {
             $msg = "Error!! {$filename} doesn't exist.";
-            include_once("./application/views/" . TEMPLATE_COMMON_ERROR . ".php");
+            include_once("./application/views/" . Config::get("templateCommonError") . ".php");
+            return false;
         }
     }
 }

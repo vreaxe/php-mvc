@@ -9,7 +9,7 @@ class NoteModel extends Model {
     }
     
     public function getOneById( $id ) {
-        $resultado = $this->queryOne("SELECT * FROM notes WHERE id = " . $id);
+        $resultado = $this->query("SELECT * FROM notes WHERE id = " . $id);
         return $resultado;
     }
 }

@@ -14,13 +14,13 @@ class Router {
         if ( $url[0] ) {
             $controller = $url[0];
         } else {
-            $controller = MAIN_CONTROLLER;
+            $controller = Config::get("mainController");
         }
         
         if ( $url[1] ) {
             $method = $url[1];
         } else {
-            $method = MAIN_METHOD_EACH_CTRL;
+            $method = Config::get("mainMethodEachController");
         }
         
         $params = array();
@@ -35,10 +35,10 @@ class Router {
             if ( method_exists( $disp, $method ) ) {
                 call_user_func_array( array( $disp, $method ), $params );
             } else {
-                $this->view->render( TEMPLATE_ERROR_404 );
+                $this->view->render( Config::get("templateError404") );
             }
         } else {
-            $this->view->render( TEMPLATE_ERROR_404 );
+            $this->view->render( Config::get("templateError404") );
         }
     }
 }

@@ -1,12 +1,10 @@
 <?php
 
-class Model extends PDO {
+class Model extends Db {
     public $table = null;
-    // move $db to another class named Db
-    public $db = null;
     
     public function __construct() {
-        $this->connect();
+        parent::__construct();
         $this->setTable();
     }
     
@@ -18,19 +16,14 @@ class Model extends PDO {
         }
     }
     
-    public function connect() {
-        try {
-            $this->db = new PDO('mysql:host='.DB_HOST.';dbname='.DB_NAME, DB_USER, DB_PASSWORD);
-            $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        }catch(PDOException $e){
-            echo "ERROR: " . $e->getMessage();
-        }
-    }
-    
     public function query( $sql = '' ) {
         $sql = $this->db->prepare( $sql );
         $sql->execute();
-        $result = $sql->fetchAll();
+        if ( $sql->rowCount() == 1 ) {
+            $result = $sql->fetch();
+        } else {
+            $result = $sql->fetchAll();
+        }
         return $result;
     }
     
